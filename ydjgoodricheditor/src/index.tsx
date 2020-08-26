@@ -26,6 +26,7 @@ import BlockTypesControl from './BlockTypesControl'
 import AddLinkControl from './AddLinkControl'
 import TextColorControl from './TextColorControl'
 import EmojiControl from './EmojiControl'
+import FormulaControl from './FormulaControl'
 import FontSizeControl from './FontSizeControl'
 import ImageControl from './ImageControl'
 import Media from './ImageControl/media'
@@ -110,6 +111,11 @@ export default class YdjRichEditor extends React.Component<IEditorProp> {
 
     // 添加emoji
     onAddEmoji = editorState => {
+        this.onEditorStateChange(editorState)
+    }
+
+     // 添加Formula
+     onAddFormula = editorState => {
         this.onEditorStateChange(editorState)
     }
 
@@ -318,6 +324,10 @@ export default class YdjRichEditor extends React.Component<IEditorProp> {
                         editorState={this.state.editorState}
                         onAddImage={this.onAddImage}
                         imageUploadConfig={this.props.imageUploadConfig}
+                    />
+                     <FormulaControl
+                       editorState={this.state.editorState}
+                       onAddFormula={this.onAddFormula}
                     />
                     {functionConfig.blockStyleControl === false ? (
                         ''
